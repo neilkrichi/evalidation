@@ -3,7 +3,8 @@ import axios from 'axios';
 import './App.css';
 
 const ROOT_URL =  'https://api.kickbox.com/v2/verify?email='
-const API_KEY = 'test_411b90ccb4724c543bb6c4e2e7ec3b80e9e8d9982ae98ec75f7d5f85f7dc3cc7'
+const API_KEY = 'live_0d892a2dffcb5263b897f730128ef41a1a3164ea0d66ad3e4613583cf128dccc'
+//'test_411b90ccb4724c543bb6c4e2e7ec3b80e9e8d9982ae98ec75f7d5f85f7dc3cc7'
 
 class App extends Component {
   constructor(props) {
@@ -25,11 +26,18 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    return axios.get(`${ROOT_URL}${this.state.email}&apikey=${API_KEY}`)
+    return axios.get(`${ROOT_URL}${this.state.email}&apikey=${API_KEY}` /*, {
+       crossdomain: true,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT',
+        'Content-Type': 'application/json',
+      }}*/)
     .then((response) => {
       console.log(response);
     })
     .catch((error) => {
+      console.log("NOT WORKING");
     });
   }
 
