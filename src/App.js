@@ -34,19 +34,6 @@ class App extends Component {
     if (this.props.emaildata.length > 0) {
       console.log(this.props.emaildata);
     }
-/*    return axios.get(`${URL}${this.state.email}` , {
-       crossdomain: true,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, POST, PUT',
-        'Content-Type': 'application/json',
-      }})
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.log("NOT WORKING");
-    }); */
   }
 
   validateEmail(){
