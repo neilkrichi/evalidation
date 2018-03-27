@@ -23,6 +23,10 @@ class App extends Component {
 
   }
 
+  componentDidMount() {
+    this.props.fetchEmailData('neil');
+  }
+
   handleInputChange(event) {
     this.setState({[event.target.name]: event.target.value});
   }
@@ -30,9 +34,13 @@ class App extends Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.fetchEmailData(this.state.email);
+    this.validateEmail();
 
-    if (this.props.emaildata.length > 0) {
-      console.log(this.props.emaildata);
+    if ( this.props.emaildata.length > 0 && this.state.emailError !== 'error' ) {
+      console.log(this.props.emaildata[0]);
+    }
+    else {
+      console.log('Nope!')
     }
   }
 
@@ -47,24 +55,32 @@ class App extends Component {
     }
   }
 
+  renderErrorMessage() {
+    if (this.state.emailError === 'error') {
+      return (
+        <p>Please enter a valid email format.</p>
+      )
+    }
+  }
+
   render() {
     return (
       <div className='app'>
         <header className='app-header'>
           <h1 className='app-title'>Invoice Simple Coding Challenge</h1>
         </header>
-
         <div className='signup'>
           <div className='page-container'>
             <form onSubmit={this.handleSubmit}>
               <div className={this.state.emailError}>
-                <label>Email </label><br/>
+                <label>Please enter an email address:</label><br/>
                 <input type ='text' name='email'
                   onBlur={this.validateEmail}
                   value={this.state.email}
                   placeholder="example@email.com"
                   onChange={this.handleInputChange}/>
               </div>
+              {this.renderErrorMessage()}
               <input type="submit" onClick={this.handleSubmit} />
             </form>
           </div>
