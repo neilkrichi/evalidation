@@ -24,7 +24,6 @@ class SearchBar extends Component {
 
     handleSubmit(e) {
       e.preventDefault();
-      this.props.fetchEmailData(this.state.email);
     }
 
     validateEmail(){
@@ -33,9 +32,10 @@ class SearchBar extends Component {
       }
       else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,9}$/i.test(this.state.email)) {
         this.setState({emailError: 'error'})
-      }else{
+      }
+      else {
         this.setState({emailError: 'nice'})
-        this.handleSubmit()
+        this.props.fetchEmailData(this.state.email);
       }
     }
 
