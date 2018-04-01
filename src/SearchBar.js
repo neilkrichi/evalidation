@@ -51,13 +51,12 @@ class SearchBar extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <div className={this.state.emailError}>
-          <label>Please enter an email address:</label><br/>
           <input type ='text' name='email'
             value={this.state.email}
             placeholder="example@email.com"
             onChange={this.handleChange}/>
+          {this.renderErrorMessage()}
         </div>
-        {this.renderErrorMessage()}
         <input type="submit" onClick={this.validateEmail} />
       </form>
     )
