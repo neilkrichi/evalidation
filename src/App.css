@@ -50,3 +50,7 @@ input[type=text], input[type=password], textarea, select {
     border: none;
     border-radius: 4px;
 }
+
+.hidden {
+  display: none;
+}
