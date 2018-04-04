@@ -8,7 +8,6 @@ import ReduxPromise from 'redux-promise';
 
 import reducers from './reducers'
 
-
 const createStorewithMiddleware = compose(
   applyMiddleware(ReduxPromise),
   window.devToolsExtension ? window.devToolsExtension() : f => f)(createStore)
